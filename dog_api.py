@@ -41,7 +41,7 @@ def get_all_breeds():
         data = response.json()
         return data["message"]
     except requests.exceptions.RequestException as e:
-        print(" Error: Could not fetch breed list from API.")
+        print("Error: Could not fetch breed list from API.")
         raise e
 
 def get_random_image(breed):
@@ -56,7 +56,7 @@ def get_random_image(breed):
         else:
             raise ValueError("Breed not found.")
     except Exception as e:
-        print(f" Error: {e}")
+        print(f"Error: {e}")
         raise e
     # TODO: Make a request to https://dog.ceo/api/breed/{breed}/images/random
     # TODO: Return the image URL or handle errors
@@ -74,7 +74,7 @@ def get_random_sub_breed_image(breed, sub_breed):
         else:
             raise ValueError("Sub-breed not found.")
     except Exception as e:
-        print(f" Error: {e}")
+        print(f"Error: {e}")
         raise e
     # TODO: Make a request to https://dog.ceo/api/breed/{breed}/{sub_breed}/images/random
     # TODO: Return the image URL or handle errors
@@ -83,7 +83,7 @@ def get_random_sub_breed_image(breed, sub_breed):
 def show_breeds(breeds_dict):
     """Prints all available breeds 5 per line."""
     all_breeds = sorted(breeds_dict.keys())
-    print("\n Available Breeds:")
+    print("\nAvailable Breeds:")
     for i in range(0, len(all_breeds), 5):
         print("  " + " | ".join(all_breeds[i:i+5]))
     # TODO: Print all breeds (sorted), 5 per line
@@ -113,11 +113,11 @@ def main():
                 try:
                     image_url = get_random_image(breed)
                     if image_url:
-                        print(f"\n🐶 Random image of {breed}: {image_url}")
+                        print(f"\n Random image of {breed}: {image_url}")
                 except Exception:
                     pass
             else:
-                print(" Error: Breed not found.")
+                print("Error: Breed not found.")
 
             # TODO: Check if breed exists and fetch image
             # TODO: Print image URL or error message
@@ -138,21 +138,22 @@ def main():
                     except Exception:
                         pass
                 else:
-                    print(" Error: Sub-breed not found.")
+                    print("Error: Sub-breed not found.")
             elif breed in breeds:
-                print(" Error: This breed has no sub-breeds.")
+                print("Error: This breed has no sub-breeds.")
             else:
-                print(" Error: Breed not found.")
+                print("Error: Breed not found.")
             # TODO: Check if breed has sub-breeds
             # TODO: Ask for sub-breed, check if valid, then fetch image
             # TODO: Print image URL or error message
 
+        
         elif choice == "4":
-            print(" Goodbye!")
+            print("Goodbye!")  # Important: exact string match
             break
 
         else:
-            print(" Invalid choice. Please select a number between 1 and 4.")
+            print("Invalid choice. Please select a number between 1 and 4.")
 
 if __name__ == "__main__":
     main()
